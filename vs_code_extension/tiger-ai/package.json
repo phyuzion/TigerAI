@@ -1,0 +1,52 @@
+{
+  "name": "tiger-ai",
+  "displayName": "TigerAI",
+  "description": "An AI-powered VS Code extension integrated with OpenAI",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onView:tigerAIView",
+    "onCommand:tiger-ai.start",
+    "onCommand:tiger-ai.sendMessage"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "tiger-ai.start", "title": "TigerAI: Start" },
+      { "command": "tiger-ai.sendMessage", "title": "TigerAI: Send Message" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "tigerAI", "title": "TigerAI", "icon": "media/icon.svg" }
+      ]
+    },
+    "views": {
+      "tigerAI": [
+        { "id": "tigerAIView", "name": "Chat with TigerAI" }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "vscode": "^1.1.37"
+  }
+}
